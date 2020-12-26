@@ -12,22 +12,18 @@ ENV AKAUNTING_RELEASE $AKAUNTING_RELEASE
 RUN \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
-      curl \
-      unzip \
+      php7-bcmath \
       php7-ctype \
+      php7-curl \
       php7-dom \
       php7-gd \
       php7-mysqli \
       php7-mysqlnd \
-      php7-openssl \
       php7-pdo_mysql \
-      php7-fileinfo \
       php7-posix \
-      php7-session \
       php7-tokenizer \
-      php7-xml \
       php7-zip \
-      php7-zlib && \
+      unzip && \
    mkdir -p /opt/akaunting && \
    echo "Akaunting version: ${AKAUNTING_RELEASE}" > /opt/akaunting/version && \
    echo "**** cleanup ****" && \
