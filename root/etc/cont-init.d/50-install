@@ -8,9 +8,9 @@ mkdir -p \
 # install app
 if [ ! -f /config/www/akaunting/index.php ]; then
   echo "**** Downloading Akaunting ${AKAUNTING_RELEASE} ****"
-  curl -o \
+  curl -s -o \
     /app/akaunting.zip -L \
-    "https://github.com/akaunting/akaunting/releases/download/${AKAUNTING_RELEASE}/Akaunting_${AKAUNTING_RELEASE}-Stable.zip" >/dev/null
+    "https://github.com/akaunting/akaunting/releases/download/${AKAUNTING_RELEASE}/Akaunting_${AKAUNTING_RELEASE}-Stable.zip"
   unzip -q /app/akaunting.zip -d \
     /config/www/akaunting
   chown abc:abc -R \
