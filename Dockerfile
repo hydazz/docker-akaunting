@@ -31,8 +31,6 @@ RUN \
    mkdir -p /opt/akaunting && \
    echo "Akaunting version: ${AKAUNTING_RELEASE}" > /opt/akaunting/version && \
    echo "**** cleanup ****" && \
-   apk del --purge \
-      build-dependencies && \
    rm -rf \
       /tmp/*
 
