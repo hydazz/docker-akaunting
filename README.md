@@ -14,11 +14,12 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Australia/Melbourne \
   -p 443:443 \
+  -p 80:80 \
   -v <path to appdata>:/config \
   --restart unless-stopped \
   vcxpz/akaunting
 ```
-On Unraid? Theres a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/akaunting.xml)
+On Unraid? There's a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/akaunting.xml)
 
 ## Todo
 * Nothing, everything works 🙂

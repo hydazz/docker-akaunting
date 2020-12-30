@@ -1,7 +1,7 @@
 server {
 
-     listen 80 http2;
-     listen 443 ssl http2;
+     listen 80 http2 default_server;
+     listen 443 ssl http2 default_server;
 
      ssl_certificate /config/keys/cert.crt;
      ssl_certificate_key /config/keys/cert.key;
@@ -47,7 +47,7 @@ server {
      location ~ \.php$ {
 
           fastcgi_split_path_info ^(.+\.php)(/.+)$;
-          fastcgi_pass 127.0.0.1:9000; # Depends On The PHP Version
+          fastcgi_pass 127.0.0.1:9000;
           fastcgi_index index.php;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
           include /etc/nginx/fastcgi_params;
