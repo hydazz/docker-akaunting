@@ -19,7 +19,7 @@ docker run -d \
   --restart unless-stopped \
   vcxpz/akaunting
 ```
-On Unraid? There's a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/akaunting.xml)
+On Unraid? There's a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/Akaunting.xml)
 
 ## Todo
 * Nothing, everything works 🙂
