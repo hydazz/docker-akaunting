@@ -17,4 +17,6 @@ if [ ! -f /config/www/akaunting/index.php ]; then
     /config/www/akaunting
   rm -rf \
     /app/*
+else
+  echo "Akaunting is already installed"
 fi
