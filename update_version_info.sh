@@ -1,8 +1,9 @@
 #!/bin/bash
 
-OVERLAY_VERSION=$(curl -sX GET "https://raw.githubusercontent.com/hydazz/docker-baseimage-alpine-nginx/main/version_info.json" | jq -r .overlay_version)
+OVERLAY_VERSION=$(cat package_versions.txt | grep -E "s6-overlay.*?-" | sed -n 1p | cut -c 12- | sed -E 's/-r.*//g')
 NGINX_VERSION=$(cat package_versions.txt | grep -E "nginx.*?-" | sed -n 1p | cut -c 7- | sed -E 's/-r.*//g')
 PHP_VERSION=$(cat package_versions.txt | grep -E "php.*?-" | sed -n 1p | cut -c 6- | sed -E 's/-r.*//g')
+
 OLD_OVERLAY_VERSION=$(cat version_info.json | jq -r .overlay_version)
 OLD_NGINX_VERSION=$(cat version_info.json | jq -r .nginx_version)
 OLD_PHP_VERSION=$(cat version_info.json | jq -r .php_version)
