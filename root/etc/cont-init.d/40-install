@@ -2,21 +2,19 @@
 
 # create folders
 mkdir -p \
-  /config/www/akaunting \
-  /config/crontabs
+	/config/www/akaunting \
+	/config/crontabs
 
 # install app
 if [ ! -f /config/www/akaunting/index.php ]; then
-  echo "**** Downloading Akaunting ${AKAUNTING_RELEASE} ****"
-  curl -s -o \
-    /app/akaunting.zip -L \
-    "https://github.com/akaunting/akaunting/releases/download/${AKAUNTING_RELEASE}/Akaunting_${AKAUNTING_RELEASE}-Stable.zip"
-  unzip -q /app/akaunting.zip -d \
-    /config/www/akaunting
-  chown abc:abc -R \
-    /config/www/akaunting
-  rm -rf \
-    /app/*
-else
-  echo "Akaunting is already installed"
+	echo "**** Downloading Akaunting ${AKAUNTING_RELEASE} ****"
+	curl -s -o \
+		/app/akaunting.zip -L \
+		"https://github.com/akaunting/akaunting/releases/download/${AKAUNTING_RELEASE}/Akaunting_${AKAUNTING_RELEASE}-Stable.zip"
+	unzip -q /app/akaunting.zip -d \
+		/config/www/akaunting
+	chown abc:abc -R \
+		/config/www/akaunting
+	rm -rf \
+		/app/*
 fi
