@@ -1,13 +1,8 @@
-name: Manual Update CI
+name: Cron Builder CI
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "**/Dockerfile"
-      - "root/**"
+  schedule:
+    - cron: "10 11 * * 0"
 
 jobs:
   latest:
@@ -19,7 +14,7 @@ jobs:
         id: variables
         env:
           DOCKERHUB_IMAGE: vcxpz/akaunting
-          DOCKERIMAGE_TAG: dev
+          DOCKERIMAGE_TAG: latest
         run: |
           echo "::set-output name=DOCKERHUB_IMAGE::$DOCKERHUB_IMAGE"
           echo "::set-output name=DOCKERIMAGE_TAG::$DOCKERIMAGE_TAG"
@@ -40,7 +35,6 @@ jobs:
 
       - name: Build The Docker Image
         env:
-          VERSION: ${{ steps.variables.outputs.VERSION }}
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
           AKAUNTING_RELEASE: ${{ steps.variables.outputs.AKAUNTING_RELEASE }}
         run: |
@@ -73,6 +67,7 @@ jobs:
           git push
 
       - name: Tag And Push Docker Image
+        if: steps.readme.outputs.OLD_MD5 != steps.readme.outputs.NEW_MD5 || steps.packages.outputs.OLD_MD5 != steps.packages.outputs.NEW_MD5
         env:
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
           DOCKERIMAGE_TAG: ${{ steps.variables.outputs.DOCKERIMAGE_TAG }}

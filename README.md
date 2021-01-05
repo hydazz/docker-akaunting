@@ -20,6 +20,3 @@ docker run -d \
   vcxpz/akaunting
 ```
 On Unraid? There's a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/akaunting.xml)
-
-## Todo
-* Nothing, everything works 🙂
