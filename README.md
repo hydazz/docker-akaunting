@@ -5,6 +5,7 @@
 
 ## Version Information
 ![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6 overlay](https://img.shields.io/badge/s6_overlay-2.1.0.2-blue?style=for-the-badge) ![nginx](https://img.shields.io/badge/nginx-1.18.0-269539?style=for-the-badge&logo=nginx) ![php](https://img.shields.io/badge/php-7.4.13-777BB4?style=for-the-badge&logo=php) ![akaunting](https://img.shields.io/badge/akaunting-2.0.26-blue?style=for-the-badge)
+
 **[See here for a list of packages](https://github.com/hydazz/docker-akaunting/blob/main/package_versions.txt)**
 
 ## Usage
