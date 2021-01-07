@@ -34,6 +34,8 @@ jobs:
           git config --global user.name "github-actions"
 
       - name: Build The Docker Image
+        env:
+          RELEASE: ${{ steps.variables.outputs.RELEASE }}
         run: |
           docker build --no-cache --pull . --file Dockerfile --build-arg RELEASE="${RELEASE}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
 

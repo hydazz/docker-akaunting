@@ -3,7 +3,7 @@ name: Auto Release CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "15 0 * * 1-6"
 
 jobs:
   check-for-updates:
@@ -20,7 +20,7 @@ jobs:
       - name: Create Tag
         if: steps.variables.outputs.OLD_VERSION != steps.variables.outputs.VERSION
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           OLD_VERSION: ${{ steps.variables.outputs.OLD_VERSION }}
           VERSION: ${{ steps.variables.outputs.VERSION }}
         run: |
