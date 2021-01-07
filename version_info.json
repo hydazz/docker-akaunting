@@ -2,5 +2,5 @@
   "overlay_version": "2.1.0.2",
   "nginx_version": "1.18.0",
   "php_version": "7.4.13",
-  "akaunting_release": ""
+  "akaunting_release": "2.0.26"
 }
