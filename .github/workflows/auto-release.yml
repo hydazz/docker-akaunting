@@ -1,0 +1,37 @@
+name: Auto Release CI
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # Every day
+
+jobs:
+  check-for-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set Enviroment Variables
+        id: variables
+        run: |
+          echo "OLD_VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r .tag_name)" >>$GITHUB_ENV
+          echo "VERSION=$(curl -sX GET "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r .tag_name)" >>$GITHUB_ENV
+
+      - name: Github Login
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
+
+      - name: Create Tag
+        run: |
+          echo '{"tag_name":"'${VERSION}'",\
+                 "target_commitish": "main",\
+                 "name": "'${VERSION}'",\
+                 "body": "Updating AMP version of '${OLD_VERSION}' to '${VERSION}'\\n\\n' >start
+          printf '","draft": false,"prerelease": false}' >>releasebody.json
+          paste -d'\\0' start releasebody.json >releasebody.json.done
+          curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST https://api.github.com/repos/hydazz/docker-akaunting/releases -d @releasebody.json.done
