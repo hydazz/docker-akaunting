@@ -3,33 +3,29 @@ name: Auto Release CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # Every day
+    - cron: "0 0 * * *" # daily
 
 jobs:
   check-for-updates:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: main
-          fetch-depth: 0
+      - uses: actions/checkout@v2
 
       - name: Set Enviroment Variables
         id: variables
         run: |
-          echo "OLD_VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r .tag_name)" >>$GITHUB_ENV
-          echo "VERSION=$(curl -sX GET "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r .tag_name)" >>$GITHUB_ENV
+          echo "::set-output name=OLD_VERSION::$(curl -sX GET "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r .tag_name)"
+          echo "::set-output name=VERSION::$(curl -sX GET "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r .tag_name)"
 
-      - name: Github Login
+      - name: Create Tag
+        if: steps.variables.outputs.OLD_VERSION != steps.variables.outputs.VERSION
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OLD_VERSION: ${{ steps.variables.outputs.OLD_VERSION }}
+          VERSION: ${{ steps.variables.outputs.VERSION }}
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-
-      - name: Create Tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
           printf '{
                "tag_name": "'$VERSION'",
                "target_commitish": "'$main'",

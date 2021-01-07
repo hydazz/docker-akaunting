@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "::set-output name=DOCKERHUB_IMAGE::$DOCKERHUB_IMAGE"
           echo "::set-output name=DOCKERIMAGE_TAG::$DOCKERIMAGE_TAG"
-          echo "::set-output name=AKAUNTING_RELEASE::$(curl -sX GET "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r .tag_name)"
+          echo "::set-output name=RELEASE::$(curl -sX GET "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r .tag_name)"
 
       - name: Docker Login
         env:
@@ -34,9 +34,9 @@ jobs:
         env:
           VERSION: ${{ steps.variables.outputs.VERSION }}
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
-          AKAUNTING_RELEASE: ${{ steps.variables.outputs.AKAUNTING_RELEASE }}
+          RELEASE: ${{ steps.variables.outputs.RELEASE }}
         run: |
-          docker build --no-cache --pull . --file Dockerfile --build-arg AKAUNTING_RELEASE="$AKAUNTING_RELEASE" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
+          docker build --no-cache --pull . --file Dockerfile --build-arg RELEASE="$RELEASE" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
 
       - name: Tag And Push Docker Image
         env:

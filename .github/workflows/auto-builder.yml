@@ -2,7 +2,9 @@ name: Auto Builder CI
 
 on:
   schedule:
-    - cron: "10 0 * * 0"
+    - cron: "110 0 * * 0" # weekly
+  release:
+    types: [released]
 
 jobs:
   latest:
@@ -18,7 +20,7 @@ jobs:
         run: |
           echo "::set-output name=DOCKERHUB_IMAGE::$DOCKERHUB_IMAGE"
           echo "::set-output name=DOCKERIMAGE_TAG::$DOCKERIMAGE_TAG"
-          echo "::set-output name=AKAUNTING_RELEASE::$(curl -sX GET "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r .tag_name)"
+          echo "::set-output name=RELEASE::$(curl -sX GET "https://api.github.com/repos/hydazz/docker-akaunting/tags/latest" | jq -r .tag_name)"
 
       - name: Docker Login
         env:
@@ -27,8 +29,6 @@ jobs:
           echo $DOCKER_PASSWORD | docker login -u vcxpz --password-stdin
 
       - name: Github Login
-        env:
-          GIT_USER: ${{ steps.variables.outputs.GIT_USER }}
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
@@ -36,9 +36,9 @@ jobs:
       - name: Build The Docker Image
         env:
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
-          AKAUNTING_RELEASE: ${{ steps.variables.outputs.AKAUNTING_RELEASE }}
+          RELEASE: ${{ steps.variables.outputs.RELEASE }}
         run: |
-          docker build --no-cache --pull . --file Dockerfile --build-arg AKAUNTING_RELEASE="$AKAUNTING_RELEASE" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
+          docker build --no-cache --pull . --file Dockerfile --build-arg RELEASE="$RELEASE" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
 
       - name: Get New Package Versions From Image
         id: packages
@@ -53,7 +53,7 @@ jobs:
       - name: Update README.md
         id: readme
         env:
-          AKAUNTING_RELEASE: ${{ steps.variables.outputs.AKAUNTING_RELEASE }}
+          AKAUNTING_RELEASE: ${{ steps.variables.outputs.RELEASE }}
         run: |
           echo "::set-output name=OLD_MD5::$(md5sum README.md | awk '{ print $1 }')"
           chmod +x update_version_info.sh && ./update_version_info.sh
