@@ -3,7 +3,7 @@ name: Auto Release CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # daily
+    - cron: "0 0 * * *"
 
 jobs:
   check-for-updates:
