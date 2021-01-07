@@ -27,6 +27,8 @@ jobs:
           git config --global user.name "github-actions"
 
       - name: Create Tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo '{"tag_name":"'${VERSION}'",\
                  "target_commitish": "main",\
@@ -34,4 +36,4 @@ jobs:
                  "body": "Updating AMP version of '${OLD_VERSION}' to '${VERSION}'\\n\\n' >start
           printf '","draft": false,"prerelease": false}' >>releasebody.json
           paste -d'\\0' start releasebody.json >releasebody.json.done
-          curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST https://api.github.com/repos/hydazz/docker-akaunting/releases -d @releasebody.json.done
+          curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com/repos/hydazz/docker-akaunting/releases -d @releasebody.json.done
