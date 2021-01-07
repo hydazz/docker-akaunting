@@ -10,11 +10,11 @@ OLD_PHP_VERSION=$(cat version_info.json | jq -r .php_version)
 OLD_AKAUNTING_RELEASE=$(cat version_info.json | jq -r .akaunting_release)
 
 sed -i \
-  -e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
-  -e "s/${OLD_NGINX_VERSION}/${NGINX_VERSION}/g" \
-  -e "s/${OLD_PHP_VERSION}/${PHP_VERSION}/g" \
-  -e "s/${OLD_AKAUNTING_RELEASE}/${AKAUNTING_RELEASE}/g" \
-  README.md
+	-e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
+	-e "s/${OLD_NGINX_VERSION}/${NGINX_VERSION}/g" \
+	-e "s/${OLD_PHP_VERSION}/${PHP_VERSION}/g" \
+	-e "s/${OLD_AKAUNTING_RELEASE}/${AKAUNTING_RELEASE}/g" \
+	README.md
 
 NEW_VERSION_INFO="overlay_version|nginx_version|php_version|akaunting_release
 ${OVERLAY_VERSION}|${NGINX_VERSION}|${PHP_VERSION}|${AKAUNTING_RELEASE}"
