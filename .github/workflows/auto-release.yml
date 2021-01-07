@@ -31,11 +31,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           printf '{
-            "tag_name": "'$VERSION'",
-            "target_commitish": "'$main'",
-            "name": "'$VERSION'",
-            "body": "Upgrading Akaunting "'$OLD_VERSION'" to "'$VERSION'"",
-            "draft": false,
-            "prerelease": false
+               "tag_name": "'$VERSION'",
+               "target_commitish": "'$main'",
+               "name": "'$VERSION'",
+               "body": "Upgrading Akaunting '$OLD_VERSION' to '$VERSION'",
+               "draft": "false",
+               "prerelease": "false"
           }' >releasebody.json
           curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com/repos/hydazz/docker-akaunting/releases -d @releasebody.json
