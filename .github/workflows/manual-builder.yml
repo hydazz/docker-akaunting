@@ -20,7 +20,7 @@ jobs:
           echo "DOCKERHUB_USER=${DOCKERHUB_USER}" >>$GITHUB_ENV
           echo "DOCKERIMAGE_TAG=${DOCKERIMAGE_TAG}" >>$GITHUB_ENV
           echo "::set-output name=RELEASE::$(curl -sX GET "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r .tag_name)"
-          echo "::set-output name=USER_IMAGE::${DOCKERHUB_USER}/${DOCKERIMAGE_TAG}"
+          echo "::set-output name=USER_IMAGE::${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}"
 
       - name: Docker Login
         env:
