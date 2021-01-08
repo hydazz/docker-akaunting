@@ -2,7 +2,6 @@
 
 # permissions
 chown abc:abc \
-	/config \
-	/data
+	/config
 chown -R abc:abc \
 	/var/lib/nginx

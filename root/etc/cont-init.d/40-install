@@ -2,9 +2,8 @@
 
 # create folders
 mkdir -p \
-	/config/www/akaunting \
-	/config/crontabs
-
+	/config/www/akaunting
+	
 # install app
 if [ ! -f /config/www/akaunting/index.php ]; then
 	echo "**** Downloading Akaunting ${AKAUNTING_RELEASE} ****"
