@@ -21,7 +21,7 @@ docker run -d \
   --restart unless-stopped \
   vcxpz/akaunting
 ```
-On Unraid? There's a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/akaunting.xml)
+[![auto build](https://img.shields.io/badge/unraid_template-ff8c2f?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-templates/blob/main/hydaz/akaunting.xml)
 
 ## Upgrading Akaunting
 When you first start this image it downloads the Akaunting version listed in [Version information](https://github.com/hydazz/docker-akaunting#version-information) (Should be the latest version). If a new version of Akaunting is released, [follow these steps](https://akaunting.com/docs/update) to *manually* upgrade Akaunting. Pulling an updated version of this image **does not** *automatically* upgrade Akaunting.
