@@ -9,7 +9,7 @@ LABEL maintainer="hydaz"
 # environment settings
 ENV AKAUNTING_RELEASE=${VERSION}
 
-RUN set -x && \
+RUN set -xe && \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
       php7-bcmath \
