@@ -88,6 +88,8 @@ jobs:
             apk info -v | sort >/tmp/package_versions.txt'
 
       - name: Update README
+        env:
+          AKAUNTING_RELEASE: ${{ steps.variables.outputs.AKAUNTING_RELEASE }}
         run: |
           chmod +x update_version_info.sh && ./update_version_info.sh
 
