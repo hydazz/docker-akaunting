@@ -23,7 +23,7 @@ See [package_versions.txt](package_versions.txt) for a full list of the packages
       -e TZ=Australia/Melbourne \
       -p 443:443 \
       -p 80:80 \
-      -v :/config \
+      -v <path to appdata>:/config \
       --restart unless-stopped \
       vcxpz/akaunting
 
