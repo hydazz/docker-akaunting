@@ -48,6 +48,11 @@ jobs:
             --tag vcxpz/akaunting:$(curl -sX GET "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r .tag_name) \
             --file Dockerfile .
 
+      - name: Get New Package Versions From Image
+        run: |
+          docker run --rm --entrypoint /bin/sh -v "$PWD":/tmp ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG} -c "\
+            apk info -v | sort >/tmp/package_versions.txt"
+		  
       - name: Update README
         run: |
           export APP_VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r .tag_name)
