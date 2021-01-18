@@ -2,12 +2,12 @@ FROM vcxpz/baseimage-alpine-nginx:latest
 
 # set version label
 ARG BUILD_DATE
-ARG AKAUNTING_RELEASE
-LABEL build_version="Akaunting version:- ${AKAUNTING_RELEASE} Build-date:- ${BUILD_DATE}"
+ARG VERSION
+LABEL build_version="Akaunting version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ENV AKAUNTING_RELEASE=${AKAUNTING_RELEASE}
+ENV VERSION=${VERSION}
 
 RUN set -xe && \
    echo "**** install runtime packages ****" && \
@@ -25,7 +25,7 @@ RUN set -xe && \
       php7-zip \
       unzip && \
    mkdir -p /opt/akaunting && \
-   echo "Image Version: ${AKAUNTING_RELEASE}" > /opt/akaunting/version && \
+   echo "Image Version: ${VERSION}" > /opt/akaunting/version && \
    echo "**** cleanup ****" && \
    rm -rf \
       /tmp/*
