@@ -12,23 +12,23 @@ ENV VERSION=${VERSION}
 RUN \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
-      php7-bcmath \
-      php7-ctype \
-      php7-curl \
-      php7-dom \
-      php7-gd \
-      php7-mysqli \
-      php7-mysqlnd \
-      php7-pdo_mysql \
-      php7-posix \
-      php7-tokenizer \
-      php7-zip \
-      unzip && \
+     php7-bcmath \
+     php7-ctype \
+     php7-curl \
+     php7-dom \
+     php7-gd \
+     php7-mysqli \
+     php7-mysqlnd \
+     php7-pdo_mysql \
+     php7-posix \
+     php7-tokenizer \
+     php7-zip \
+     unzip && \
    mkdir -p /opt/akaunting && \
    echo "Image Version: ${VERSION}" > /opt/akaunting/version && \
    echo "**** cleanup ****" && \
    rm -rf \
-      /tmp/*
+     /tmp/*
 
 # copy local files
 COPY root/ /
