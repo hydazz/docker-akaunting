@@ -10,6 +10,7 @@ if [ ! -f /config/www/akaunting/index.php ]; then
 	curl -s -o \
 		/app/akaunting.zip -L \
 		"https://github.com/akaunting/akaunting/releases/download/${VERSION}/Akaunting_${VERSION}-Stable.zip"
+	echo "**** Inflating akaunting.zip ****"
 	unzip -q /app/akaunting.zip -d \
 		/config/www/akaunting
 	chown abc:abc -R \
