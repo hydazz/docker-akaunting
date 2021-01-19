@@ -1,7 +1,7 @@
 #!/bin/bash
 
-NGINX_VERSION=$(grep <package_versions.txt -E "nginx.*?-" | sed -n 1p | cut -c 7- | sed -E 's/-r.*//g')
-PHP_VERSION=$(grep <package_versions.txt -E "php.*?-" | sed -n 1p | cut -c 6- | sed -E 's/-r.*//g')
+NGINX=$(grep <package_versions.txt -E "nginx.*?-" | sed -n 1p | cut -c 7- | sed -E 's/-r.*//g')
+PHP=$(grep <package_versions.txt -E "php.*?-" | sed -n 1p | cut -c 6- | sed -E 's/-r.*//g')
 
 echo "## docker-akaunting
 
@@ -15,7 +15,7 @@ Setting up Akaunting is extremely simple, [here's](https://akaunting.com/docs/in
 
 ## Version Information
 
-![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![nginx](https://img.shields.io/badge/nginx-${NGINX_VERSION}-269539?style=for-the-badge&logo=nginx) ![php](https://img.shields.io/badge/php-${PHP_VERSION}-777BB4?style=for-the-badge&logo=php) ![akaunting](https://img.shields.io/badge/akaunting-${APP_VERSION}-blue?style=for-the-badge)
+![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![nginx](https://img.shields.io/badge/nginx-${NGINX}-269539?style=for-the-badge&logo=nginx) ![php](https://img.shields.io/badge/php-${PHP}-777BB4?style=for-the-badge&logo=php) ![akaunting](https://img.shields.io/badge/akaunting-${APP_VERSION}-blue?style=for-the-badge)
 
 See [package_versions.txt](package_versions.txt) for a full list of the packages and package versions used in this image
 
