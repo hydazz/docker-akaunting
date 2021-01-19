@@ -36,4 +36,4 @@ See [package_versions.txt](package_versions.txt) for a full list of the packages
 
 ## Upgrading Akaunting
 
-When you first start this image it downloads the Akaunting version listed in [version information](#version-information) (Should be the latest version). If a new version of Akaunting is released, [follow these steps](https://akaunting.com/docs/update) to _manually_ upgrade Akaunting. Pulling an updated version of this image **does not** _automatically_ upgrade Akaunting." >../README.md
+When you first start this image it downloads the Akaunting version listed in [version information](#version-information) (Should be the latest version). If a new version of Akaunting is released, [follow these steps](https://akaunting.com/docs/update) to _manually_ upgrade Akaunting. Pulling an updated version of this image **does not** _automatically_ upgrade Akaunting." >README.md
