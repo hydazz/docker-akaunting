@@ -1,7 +1,7 @@
 #!/bin/bash
 
-NGINX_VERSION=$(grep <../package_versions.txt -E "nginx.*?-" | sed -n 1p | cut -c 7- | sed -E 's/-r.*//g')
-PHP_VERSION=$(grep <../package_versions.txt -E "php.*?-" | sed -n 1p | cut -c 6- | sed -E 's/-r.*//g')
+NGINX_VERSION=$(grep <package_versions.txt -E "nginx.*?-" | sed -n 1p | cut -c 7- | sed -E 's/-r.*//g')
+PHP_VERSION=$(grep <package_versions.txt -E "php.*?-" | sed -n 1p | cut -c 6- | sed -E 's/-r.*//g')
 
 echo "## docker-akaunting
 
