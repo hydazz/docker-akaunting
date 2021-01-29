@@ -8,12 +8,6 @@
 
 Setting up Akaunting is extremely simple, [here's](https://akaunting.com/docs/installation) the official 3 step picture setup from Akaunting. **A MySQL server is required**
 
-## Version Information
-
-![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![nginx](https://img.shields.io/badge/nginx-1.18.0-269539?style=for-the-badge&logo=nginx) ![php](https://img.shields.io/badge/php-7.4.14-777BB4?style=for-the-badge&logo=php) ![akaunting](https://img.shields.io/badge/akaunting-2.1.0-blue?style=for-the-badge)
-
-See [package_versions.txt](package_versions.txt) for a full list of the packages and package versions used in this image
-
 ## Usage
 
     docker run -d \
