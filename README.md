@@ -26,3 +26,7 @@ Setting up Akaunting is extremely simple, [here's](https://akaunting.com/docs/in
 ## Upgrading Akaunting
 
 When you first start this image it downloads the Akaunting version listed in [version information](#version-information) (Should be the latest version). If a new version of Akaunting is released, [follow these steps](https://akaunting.com/docs/update) to _manually_ upgrade Akaunting. Pulling an updated version of this image **does not** _automatically_ upgrade Akaunting.
+
+## Fixing Appdata Permissions
+
+If you ever accidentally screw up the permissions on the appdata folder, run fix-perms within the container. This will restore most of the files/folders with the correct permissions.
