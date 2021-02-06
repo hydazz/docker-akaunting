@@ -29,4 +29,4 @@ When you first start this image it downloads the Akaunting version listed in [ve
 
 ## Fixing Appdata Permissions
 
-If you ever accidentally screw up the permissions on the appdata folder, run fix-perms within the container. This will restore most of the files/folders with the correct permissions.
+If you ever accidentally screw up the permissions on the appdata folder, run `fix-perms` within the container. This will restore most of the files/folders with the correct permissions.
