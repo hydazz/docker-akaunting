@@ -1,4 +1,4 @@
-FROM vcxpz/baseimage-alpine:latest
+FROM vcxpz/baseimage-alpine-nginx:latest
 
 # set version label
 ARG BUILD_DATE
