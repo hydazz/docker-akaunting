@@ -33,9 +33,5 @@ RUN \
 # copy local files
 COPY root/ /
 
-# http healthcheck
-HEALTHCHECK --start-period=10s --timeout=5s \
-	CMD curl --fail http://localhost/ || exit 1
-
 # ports and volumes
 VOLUME /config

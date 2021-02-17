@@ -43,8 +43,8 @@ jobs:
             --platform=linux/amd64,linux/arm64,linux/arm/v7 \
             --output "type=image,push=true" \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
-            --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r .tag_name) \
-            --tag vcxpz/akaunting:$(curl -sX GET "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r .tag_name) \
+            --build-arg VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r '.tag_name') \
+            --tag vcxpz/akaunting:$(curl -sL "https://api.github.com/repos/hydazz/docker-akaunting/releases/latest" | jq -r '.tag_name') \
             --tag vcxpz/akaunting:latest \
             --file Dockerfile .
 
