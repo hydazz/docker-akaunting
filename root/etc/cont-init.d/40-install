@@ -7,14 +7,14 @@ mkdir -p \
 # install app
 if [ ! -f /config/www/akaunting/index.php ]; then
 	echo "**** Downloading Akaunting ${VERSION} ****"
-	curl -s -o \
-		/app/akaunting.zip -L \
+	curl -o \
+		/tmp/akaunting.zip -L \
 		"https://github.com/akaunting/akaunting/releases/download/${VERSION}/Akaunting_${VERSION}-Stable.zip"
 	echo "**** Inflating akaunting.zip ****"
-	unzip -q /app/akaunting.zip -d \
+	unzip -q -o /tmp/akaunting.zip -d \
 		/config/www/akaunting
 	chown abc:abc -R \
 		/config/www/akaunting
-	rm -rf \
-		/app/*
+	rm \
+		/tmp/akaunting.zip
 fi

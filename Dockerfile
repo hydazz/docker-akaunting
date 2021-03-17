@@ -9,7 +9,7 @@ LABEL maintainer="hydaz"
 # environment settings
 ENV VERSION=${VERSION}
 
-RUN \
+RUN set -xe && \
 	echo "**** install runtime packages ****" && \
 	apk add --no-cache \
 		php8-bcmath \
