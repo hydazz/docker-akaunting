@@ -12,6 +12,7 @@ ENV VERSION=${VERSION}
 RUN set -xe && \
 	echo "**** install runtime packages ****" && \
 	apk add --no-cache \
+		jq \
 		php8-bcmath \
 		php8-ctype \
 		php8-curl \

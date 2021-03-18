@@ -4,6 +4,10 @@
 mkdir -p \
 	/config/www/akaunting
 
+if [ -z ${VERSION} ]; then
+	VERSION=$(curl -sL "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r '.tag_name')
+fi
+
 # install app
 if [ ! -f /config/www/akaunting/index.php ]; then
 	echo "**** Downloading Akaunting ${VERSION} ****"
