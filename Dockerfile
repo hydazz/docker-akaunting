@@ -1,4 +1,4 @@
-FROM vcxpz/baseimage-alpine-nginx:latest
+FROM vcxpz/baseimage-alpine-nginx:php7
 
 # set version label
 ARG BUILD_DATE
@@ -13,17 +13,17 @@ RUN set -xe && \
 	echo "**** install runtime packages ****" && \
 	apk add --no-cache \
 		jq \
-		php8-bcmath \
-		php8-ctype \
-		php8-curl \
-		php8-dom \
-		php8-gd \
-		php8-mysqli \
-		php8-mysqlnd \
-		php8-pdo_mysql \
-		php8-posix \
-		php8-tokenizer \
-		php8-zip \
+		php7-bcmath \
+		php7-ctype \
+		php7-curl \
+		php7-dom \
+		php7-gd \
+		php7-mysqli \
+		php7-mysqlnd \
+		php7-pdo_mysql \
+		php7-posix \
+		php7-tokenizer \
+		php7-zip \
 		unzip && \
 	mkdir -p /opt/akaunting && \
 	echo "Image Version: ${VERSION}" >/opt/akaunting/version && \

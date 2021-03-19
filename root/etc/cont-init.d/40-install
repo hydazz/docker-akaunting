@@ -1,19 +1,31 @@
 #!/usr/bin/with-contenv bash
 
+red='\033[1;31m'  # red
+bold='\033[1;37m' # white bold
+nc='\033[0m'      # no colour
+
 # create folders
 mkdir -p \
 	/config/www/akaunting
 
+# get version if not specified in env var
 if [ -z ${VERSION} ]; then
 	VERSION=$(curl -sL "https://api.github.com/repos/akaunting/akaunting/releases/latest" | jq -r '.tag_name')
 fi
 
-# install app
-if [ ! -f /config/www/akaunting/index.php ]; then
-	echo "**** Downloading Akaunting ${VERSION} ****"
+function download() {
 	curl -o \
 		/tmp/akaunting.zip -L \
 		"https://github.com/akaunting/akaunting/releases/download/${VERSION}/Akaunting_${VERSION}-Stable.zip"
+}
+
+# install akaunting
+if [ ! -f /config/www/akaunting/index.php ]; then
+	echo "**** Downloading Akaunting ${VERSION} ****"
+	if ! download; then
+		echo -e "${red}>>> ERROR: ${bold}Akaunting download failed. see above for errors${nc}"
+		sleep infinity
+	fi
 	echo "**** Inflating akaunting.zip ****"
 	unzip -q -o /tmp/akaunting.zip -d \
 		/config/www/akaunting
