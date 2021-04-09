@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+
+# permissions
+chown abc:abc \
+	/config
+chown -R abc:abc \
+	/var/lib/nginx
