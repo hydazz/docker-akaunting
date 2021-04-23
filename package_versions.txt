@@ -7,7 +7,7 @@ apr-util-1.6.1-r7
 argon2-libs-20190702-r1
 bash-5.1.4-r0
 brotli-libs-1.0.9-r4
-busybox-1.33.0-r6
+busybox-1.33.0-r7
 ca-certificates-20191127-r5
 ca-certificates-bundle-20191127-r5
 coreutils-8.32-r2
@@ -37,7 +37,7 @@ libressl3.2-libssl-3.2.5-r0
 libsm-1.2.3-r0
 libssl1.1-1.1.1k-r0
 libtls-standalone-2.9.1-r1
-libuuid-2.36.2-r1
+libuuid-2.36.2-r2
 libwebp-1.2.0-r0
 libx11-1.7.0-r0
 libxau-1.0.9-r0
@@ -53,11 +53,11 @@ logrotate-3.18.0-r0
 musl-1.2.2-r2
 musl-utils-1.2.2-r2
 nano-5.6.1-r0
-ncurses-libs-6.2_p20210403-r0
-ncurses-terminfo-base-6.2_p20210403-r0
+ncurses-libs-6.2_p20210418-r0
+ncurses-terminfo-base-6.2_p20210418-r0
 nghttp2-libs-1.43.0-r0
-nginx-1.18.0-r15
-oniguruma-6.9.7-r0
+nginx-1.20.0-r0
+oniguruma-6.9.7.1-r0
 openssl-1.1.1k-r0
 pcre-8.44-r0
 pcre2-10.36-r0
@@ -93,10 +93,10 @@ s6-ipcserver-2.10.0.3-r0
 scanelf-1.2.9-r0
 shadow-4.8.1-r0
 skalibs-2.10.0.3-r0
-ssl_client-1.33.0-r6
+ssl_client-1.33.0-r7
 tzdata-2021a-r0
 unzip-6.0-r8
-utmps-0.1.0.1-r0
+utmps-0.1.0.2-r0
 xz-5.2.5-r0
 xz-libs-5.2.5-r0
 zlib-1.2.11-r3
