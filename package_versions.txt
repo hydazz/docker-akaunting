@@ -38,7 +38,7 @@ libretls-3.3.2-r0
 libsm-1.2.3-r0
 libssl1.1-1.1.1k-r0
 libuuid-2.36.2-r2
-libwebp-1.2.0-r1
+libwebp-1.2.0-r2
 libx11-1.7.0-r0
 libxau-1.0.9-r0
 libxcb-1.14-r2
