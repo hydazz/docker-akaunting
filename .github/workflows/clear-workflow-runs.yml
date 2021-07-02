@@ -5,7 +5,7 @@ name: Clear Workflow Runs CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 0"
+    - cron: "20 0 * * 6"
 
 jobs:
   clear-workflow-runs:
@@ -17,5 +17,4 @@ jobs:
         uses: Mattraks/delete-workflow-runs@main
         with:
           token: ${{ secrets.TOKEN }}
-          repository: ${{ github.repository }}
-          retain_days: 1
+          repository: hydazz/docker-akaunting
